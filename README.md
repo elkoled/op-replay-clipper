@@ -1,5 +1,35 @@
 # 📽 openpilot Replay Clipper
 
+## Local execution
+**install spatialmedia in openpilot venv**
+`uv pip install "spatialmedia @ git+https://github.com/google/spatial-media.git@57c85bb5691518406408b675e52f430e0c62798c"`
+
+**fix regex in spacialmedia module**
+`openpilot/.venv/lib/python3.12/site-packages/spatialmedia/metadata_utils.py`
+line 105:
+`integer_regex_group = r"(\d+)"`
+
+**check path**
+set all values in the script:
+```
+# Configuration
+ROUTE_DIR=~/Videos/360video  # Path to the folder containing the route files
+PROJECT_PATH=/home/daniel/Repositories/op-replay-clipper  # Path to the op-replay-clipper project
+ROUTE_ID="00000061--3ffa4459c6"  # Your route ID without segment number
+OUTPUT_DIR="$PROJECT_PATH/shared"  # Output directory for the converted video
+OUTPUT_FILE="$OUTPUT_DIR/clip.equirect.mp4"  # Final output video file
+RENDER_TYPE="360"  # Render type for 360 video
+PREDICTION_OVERLAY="forward"  # Render type for overlaying predictions
+
+# Set up Python environment
+source "$PROJECT_PATH/../openpilot/.venv/bin/activate"
+```
+
+**start execution**
+`./convert_route.sh`
+
+# Project
+
 *Here's a small openpilot bug clip*:
 
 https://github.com/commaai/openpilot/assets/5363/97a6c767-9b67-4206-8ba7-b4030f08a8cd

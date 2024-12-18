@@ -375,6 +375,9 @@ if __name__ == "__main__":
     parser.add_argument(
         "--output", type=str, help="Output file name", default="./shared/cog-clip.mp4"
     )
+    parser.add_argument(
+        "--format", type=str, help="Encoding format (h264 or hevc)", default="h264"
+    )
     args = parser.parse_args()
 
     # All arguments are required
@@ -388,4 +391,5 @@ if __name__ == "__main__":
         nvidia_hardware_rendering=args.nvidia_hardware_rendering,
         forward_upon_wide_h=args.forward_upon_wide_h,
         output=args.output,
+        format=args.format,
     )
